@@ -43,12 +43,27 @@ d3.json(url).then(data =>
         let dep = feature.geometry.coordinates[2]
         return L.circleMarker(latlng,
             {
+                // Circle radius based on earthqake magnitude
                 radius:mag,
-                fillColor: "#000",
+
+                // Circle fillColor based on earthquake depth
+                fillColor: getColor(dep),
+                
                 color: "#000",
                 weight: 0.25,
                 opacity: 1,
                 fillOpacity: 1
             })
+    }
+
+    // Give circles dynamic fillColor based on earthquake depth
+    function getColor(d)
+    {
+        return d > 90 ? '#ff0000' :
+               d > 70 ? '#FF5C14' :
+               d > 50 ? '#FF8A1B' :
+               d > 30 ? '#FCD514' :
+               d > 10 ? '#98DA00' :
+               d > -10 ? '#1FD224' : '#FFEDA0'
     }
 })
