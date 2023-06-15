@@ -75,6 +75,11 @@ d3.json(url)
     legend.onAdd = function(map)
     {
         let div = L.DomUtil.create("div","info legend")
+
+        // Legend header
+        div.innerHTML += `<h4>Depth (km)</h4><br>`
+
+        // Legend contents
         let depths = ["-10-10","10-30","30-50","50-70","70-90","90+"]
         let colors = 
         [
