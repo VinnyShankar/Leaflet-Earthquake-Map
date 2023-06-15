@@ -20,11 +20,12 @@ d3.json(url).then(data =>
     // Add markers to map
     L.geoJSON(data,
         {
-            onEachFeature:onEachFeature
+            onEachFeature:onEachFeature,
+            pointToLayer:pointToLayer
         })
     .addTo(map)
 
-    // Create popup message for each marker
+    // Create popup message for each marker on click
     function onEachFeature(feature,layer)
     {
         let mag = feature.properties.mag
@@ -33,5 +34,21 @@ d3.json(url).then(data =>
         layer.bindPopup(`<text>Magnitude: ${mag}</text><br>
                          <text>Location: ${pla}</text><br>
                          <text>Depth: ${dep}km</text>`)
+    }
+
+    // Turn markers into circles
+    function pointToLayer(feature,latlng)
+    {
+        let mag = feature.properties.mag*5
+        let dep = feature.geometry.coordinates[2]
+        return L.circleMarker(latlng,
+            {
+                radius:mag,
+                fillColor: "#000",
+                color: "#000",
+                weight: 0.25,
+                opacity: 1,
+                fillOpacity: 1
+            })
     }
 })
