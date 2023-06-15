@@ -10,4 +10,10 @@ d3.json(url).then(data =>
     // Initialize map
     let map = L.map("map")
                .setView([37.09, -95.71],5)
+    
+    // Add tile layer
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {attribution:`&copy; <a href="https://www.openstreetmap.org/copyright">
+                 OpenStreetMap</a> contributors`})
+    .addTo(map)
 })
