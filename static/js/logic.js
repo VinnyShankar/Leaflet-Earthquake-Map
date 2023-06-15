@@ -66,4 +66,7 @@ d3.json(url).then(data =>
                d > 10 ? '#98DA00' :
                d > -10 ? '#1FD224' : '#FFEDA0'
     }
+
+    // Initialize map legend
+    let legend = L.control({position:"bottomright"})
 })
