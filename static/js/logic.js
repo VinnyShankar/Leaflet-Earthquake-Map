@@ -16,4 +16,8 @@ d3.json(url).then(data =>
     {attribution:`&copy; <a href="https://www.openstreetmap.org/copyright">
                  OpenStreetMap</a> contributors`})
     .addTo(map)
+
+    // Add markers to map
+    L.geoJSON(data)
+    .addTo(map)
 })
