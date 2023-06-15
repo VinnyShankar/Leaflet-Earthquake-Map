@@ -101,4 +101,20 @@ d3.json(url)
 
     // Add legend to map
     legend.addTo(map)
+
+    // Initialize info control
+    let info = L.control({position:"topright"})
+
+    // Define info attributes and HTML inserts
+    info.onAdd = function(map)
+    {
+        let div = L.DomUtil.create("div","info legend")
+        div.innerHTML += `<h1>Earthquakes (7 days)</h1>`
+        div.innerHTML += `<h3>Click on a circle to view info</h3>`
+        div.innerHTML += `<h3>Circle radii are based on Magnitude</h3>`
+        return div
+    }
+
+    // Add info to map
+    info.addTo(map)
 })
