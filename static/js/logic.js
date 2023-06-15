@@ -72,6 +72,7 @@ d3.json(url)
     let legend = L.control({position:"bottomright"})
 
     // Define legend attributes and HTML inserts
+    // Refer to CSS for additional legend attributes
     legend.onAdd = function(map)
     {
         let div = L.DomUtil.create("div","info legend")
