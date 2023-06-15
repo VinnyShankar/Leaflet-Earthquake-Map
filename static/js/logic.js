@@ -2,7 +2,8 @@
 const url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
 // Obtain data from url
-d3.json(url).then(data =>
+d3.json(url)
+.then(data =>
 {
     // Log data to the console
     console.log(data)
@@ -69,4 +70,30 @@ d3.json(url).then(data =>
 
     // Initialize map legend
     let legend = L.control({position:"bottomright"})
+
+    // Define legend attributes and HTML inserts
+    legend.onAdd = function(map)
+    {
+        let div = L.DomUtil.create("div","info legend")
+        let depths = ["-10-10","10-30","30-50","50-70","70-90","90+"]
+        let colors = 
+        [
+            "background:#1FD224",
+            "background:#98DA00",
+            "background:#FCD514",
+            "background:#FF8A1B",
+            "background:#FF5C14",
+            "background:#FF0000"
+        ]
+
+        for (const i in depths)
+        {
+            div.innerHTML += `<i style=${colors[i]}></i>${depths[i]}<br>`
+        }
+
+        return div
+    }
+
+    // Add legend to map
+    legend.addTo(map)
 })
