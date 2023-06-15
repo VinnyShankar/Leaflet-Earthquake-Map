@@ -18,6 +18,20 @@ d3.json(url).then(data =>
     .addTo(map)
 
     // Add markers to map
-    L.geoJSON(data)
+    L.geoJSON(data,
+        {
+            onEachFeature:onEachFeature
+        })
     .addTo(map)
+
+    // Create popup message for each marker
+    function onEachFeature(feature,layer)
+    {
+        let mag = feature.properties.mag
+        let pla = feature.properties.place
+        let dep = feature.geometry.coordinates[2]
+        layer.bindPopup(`<text>Magnitude: ${mag}</text><br>
+                         <text>Location: ${pla}</text><br>
+                         <text>Depth: ${dep}km</text>`)
+    }
 })
