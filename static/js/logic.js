@@ -21,20 +21,22 @@ d3.json(url)
     // Add markers to map
     L.geoJSON(data,
         {
-            onEachFeature:onEachFeature,
+            onEachFeature:popUps,
             pointToLayer:pointToLayer
         })
     .addTo(map)
 
     // Create popup message for each marker on click
-    function onEachFeature(feature,layer)
+    function popUps(feature,layer)
     {
         let mag = feature.properties.mag
         let pla = feature.properties.place
         let dep = feature.geometry.coordinates[2]
-        layer.bindPopup(`<text>Magnitude: ${mag}</text><br>
-                         <text>Location: ${pla}</text><br>
-                         <text>Depth: ${dep}km</text>`)
+        let tim = (new Date(feature.properties.time))
+        layer.bindPopup(`<text><b>Magnitude</b>: ${mag}</text><br>
+                         <text><b>Location</b>: ${pla}</text><br>
+                         <text><b>Depth</b>: ${dep}km</text><br>
+                         <text><b>Time</b>: ${tim}`)
     }
 
     // Turn markers into circles
