@@ -25,9 +25,11 @@
 ### - Visualization
 * Link to deployed GitHub page: https://vinnyshankar.github.io/Leaflet-Earthquake-Map/
 * The code renders a circle at the coordinates for each earthquake
-* Each circle's radius is proportional to the earthquake magnitude. The higher the magnitude, the longer the circle radius.
+* Each circle's radius is proportional to the earthquake magnitude. The higher the magnitude, the longer the circle radius.         
+![map](images/map.png)
 * Each circle's color is based on the earthquake depth in kilometers           
 ![legend](images/legend.png)
-![map](images/map.png)
+* The user can click on each circle to launch a tooltip that displays the magnitude, location, depth, and time of the earthquake.           
+![tooltip](images/tooltip.png)
 * The user can zoom in and  out of the map using buttons or the scroll wheel. In addition, the user can click and drag the map to view other parts of the world.            
 ![map2](images/map2.png)
